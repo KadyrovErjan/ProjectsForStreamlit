@@ -80,6 +80,7 @@ from audio.region import region_audio
 from audio.gtzan import gtzan_audio
 from audio.speech_commands import speech_audio
 from audio.urban import urban_audio
+from audio.environment import environment_audio
 
 # ---------- Основной интерфейс ----------
 st.set_page_config(
@@ -109,7 +110,8 @@ name = st.sidebar.radio("Выберите модель:", [
     "UrbanSound8K",
     "GTZAN (Music Genre)",
     "Speech Commands",
-    "Region Classification"
+    "Region Classification",
+    "Environmental"
 ])
 
 # ---------- Описание моделей ----------
@@ -123,7 +125,8 @@ descriptions = {
     "UrbanSound8K": "🎧 Распознаёт **городские звуки** — сирены, лай собак, звуки улицы и т.п.",
     "GTZAN (Music Genre)": "🎵 Классифицирует **жанр музыки** (рок, джаз, классика и др.) по аудиофрагменту.",
     "Speech Commands": "🗣️ Определяет **короткие голосовые команды** вроде “yes”, “no”, “stop”, “go”.",
-    "Region Classification": "🌏 Определяет **регион или страну** по особенностям речи (аудио)."
+    "Region Classification": "🌏 Определяет **регион или страну** по особенностям речи (аудио).",
+    "Environmental": "🌳 Распознаёт <b>звуки окружающей среды</b> — дождь, ветер, птиц, шаги, транспорт и другие шумы природы и города."
 }
 
 st.markdown(f"""
@@ -163,3 +166,6 @@ elif name == "Speech Commands":
 
 elif name == "Region Classification":
     region_audio()
+
+elif name == "Environmental":
+    environment_audio()
