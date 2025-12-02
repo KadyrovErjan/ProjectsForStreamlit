@@ -74,6 +74,7 @@ from image.buildings import buildings_image
 from image.fashion import fashion_image
 from image.cifar100 import cifar100_image
 from image.cifar10 import cifar10_image
+from image.command import command_image
 
 # Audio models
 from audio.region import region_audio
@@ -81,6 +82,12 @@ from audio.gtzan import gtzan_audio
 from audio.speech_commands import speech_audio
 from audio.urban import urban_audio
 from audio.environment import environment_audio
+
+# Text models
+from text.imdb import imdb_text
+from text.news import news_text
+from text.emotion import emotion_text
+
 
 # ---------- Основной интерфейс ----------
 st.set_page_config(
@@ -111,7 +118,11 @@ name = st.sidebar.radio("Выберите модель:", [
     "GTZAN (Music Genre)",
     "Speech Commands",
     "Region Classification",
-    "Environmental"
+    "Environmental",
+    "IMDB",
+    "News",
+    "Emotion",
+    "Command",
 ])
 
 # ---------- Описание моделей ----------
@@ -126,7 +137,11 @@ descriptions = {
     "GTZAN (Music Genre)": "🎵 Классифицирует **жанр музыки** (рок, джаз, классика и др.) по аудиофрагменту.",
     "Speech Commands": "🗣️ Определяет **короткие голосовые команды** вроде “yes”, “no”, “stop”, “go”.",
     "Region Classification": "🌏 Определяет **регион или страну** по особенностям речи (аудио).",
-    "Environmental": "🌳 Распознаёт <b>звуки окружающей среды</b> — дождь, ветер, птиц, шаги, транспорт и другие шумы природы и города."
+    "Environmental": "🌳 Распознаёт <b>звуки окружающей среды</b> — дождь, ветер, птиц, шаги, транспорт и другие шумы природы и города.",
+    "IMDB": "🎬 Определяет **тональность текста** (позитивный/негативный) из отзывов о фильмах IMDB.",
+    "Emotion": "😊 Модель анализа эмоций, определяет **23 эмоциональных состояния** по тексту.",
+    "News": "📰 Классифицирует новости по **4 категориям**: World, Sport, Business, Sci/Tech." ,
+    "Command": "🧾 Универсальная модель, распознающая **26 различных категорий изображений** — машины, еда, дорожные знаки, предметы и элементы окружающей среды.",
 }
 
 st.markdown(f"""
@@ -169,3 +184,15 @@ elif name == "Region Classification":
 
 elif name == "Environmental":
     environment_audio()
+
+elif name == "IMDB":
+    imdb_text()
+
+elif name == "News":
+    news_text()
+
+elif name == "Emotion":
+    emotion_text()
+
+elif name == "Command":
+    command_image()
